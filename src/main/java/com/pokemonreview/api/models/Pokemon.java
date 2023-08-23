@@ -23,4 +23,5 @@ public class Pokemon {
 
     @OneToMany(mappedBy = "pokemon", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<Review>();
+
 }

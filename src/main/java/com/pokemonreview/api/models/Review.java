@@ -24,4 +24,5 @@ public class Review {
     @JoinColumn(name = "pokemon_id")
     private Pokemon pokemon;
 
+
 }

@@ -32,10 +32,14 @@ public class PokemonServiceTests {
 
     @Test
     public void PokemonService_CreatePokemon_ReturnsPokemonDto() {
+
         Pokemon pokemon = Pokemon.builder()
                 .name("pikachu")
                 .type("electric").build();
-        PokemonDto pokemonDto = PokemonDto.builder().name("pickachu").type("electric").build();
+
+        PokemonDto pokemonDto = PokemonDto.builder()
+                .name("pikachu")
+                .type("electric").build();
 
         when(pokemonRepository.save(Mockito.any(Pokemon.class))).thenReturn(pokemon);
 
@@ -46,6 +50,7 @@ public class PokemonServiceTests {
 
     @Test
     public void PokemonService_GetAllPokemon_ReturnsResponseDto() {
+
         Page<Pokemon> pokemons = Mockito.mock(Page.class);
 
         when(pokemonRepository.findAll(Mockito.any(Pageable.class))).thenReturn(pokemons);
@@ -56,8 +61,13 @@ public class PokemonServiceTests {
     }
     @Test
     public void PokemonService_FindById_ReturnPokemonDto() {
+
         int pokemonId = 1;
-        Pokemon pokemon = Pokemon.builder().id(1).name("pikachu").type("electric").type("this is a type").build();
+        Pokemon pokemon = Pokemon.builder()
+                .id(1).name("pikachu")
+                .type("electric")
+                .type("this is a type").build();
+
         when(pokemonRepository.findById(pokemonId)).thenReturn(Optional.ofNullable(pokemon));
 
         PokemonDto pokemonReturn = pokemonService.getPokemonById(pokemonId);
@@ -74,9 +84,9 @@ public class PokemonServiceTests {
         when(pokemonRepository.findById(pokemonId)).thenReturn(Optional.ofNullable(pokemon));
         when(pokemonRepository.save(pokemon)).thenReturn(pokemon);
 
-        PokemonDto updateReturn = pokemonService.updatePokemon(pokemonDto, pokemonId);
+        PokemonDto updatePokemon = pokemonService.updatePokemon(pokemonDto, pokemonId);
 
-        Assertions.assertThat(updateReturn).isNotNull();
+        Assertions.assertThat(updatePokemon).isNotNull();
     }
 
     @Test

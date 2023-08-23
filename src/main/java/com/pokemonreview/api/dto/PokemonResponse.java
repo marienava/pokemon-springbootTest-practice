@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class PokemonResponse {
+
     private List<PokemonDto> content;
     private int pageNo;
     private int pageSize;

@@ -94,4 +94,5 @@ public class PokemonServiceImpl implements PokemonService {
         pokemon.setType(pokemonDto.getType());
         return pokemon;
     }
+
 }

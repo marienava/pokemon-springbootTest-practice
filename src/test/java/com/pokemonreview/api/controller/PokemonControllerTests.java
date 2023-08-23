@@ -65,6 +65,7 @@ public class PokemonControllerTests {
                 .content(objectMapper.writeValueAsString(pokemonDto)));
 
         response.andExpect(MockMvcResultMatchers.status().isCreated())
+                //.andDo(MockMvcResultHandlers.print());
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name", CoreMatchers.is(pokemonDto.getName())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.type", CoreMatchers.is(pokemonDto.getType())));
     }
